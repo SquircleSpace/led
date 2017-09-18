@@ -1,0 +1,6 @@
+include_rules
+
+: Cylinder.hs |> !ghcld |> cylinder | Cylinder.o Cylinder.hi
+: cylinder |> ./cylinder > %o |> cylinder.json
+
+.gitignore

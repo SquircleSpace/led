@@ -1,0 +1,10 @@
+CFLAGS = -g3 -Wall -Wextra -pedantic -O0 -isystem ./external-includes
+CCFLAGS = -std=c11
+CXXFLAGS = -std=c++14
+
+!cxx = |> ^ CXX %f^ g++ $(CFLAGS) $(CXXFLAGS) -c %f -o %B.o |> %B.o
+!cc = |> ^ CC %f^ gcc $(CFLAGS) $(CCFLAGS) -c %f -o %B.o |> %B.o
+!ar = |> ^ AR %o^ ar rcs %o %f |>
+!ld = |> ^ LD %o^ g++ $(CFLAGS) $(CXXFLAGS) -o %o %f |>
+!ghc = |> ^ GHC %f^ ghc %f |> %B.hi %B.o
+!ghcld = |> ^ GHCLD %o^ ghc -o %o %f |>

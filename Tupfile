@@ -1,0 +1,8 @@
+include_rules
+
+cpp_files = rainbow.cpp
+
+: foreach $(cpp_files) |> !cxx |>
+: rainbow.o |> !ld |> rainbow
+
+.gitignore
