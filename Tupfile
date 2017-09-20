@@ -1,8 +1,13 @@
 include_rules
 
-cpp_files = rainbow.cpp
+EFFECT_FILES = RainbowCylinder.cpp
 
-: foreach $(cpp_files) |> !cxx |>
-: rainbow.o |> !ld |> rainbow
+: foreach $(EFFECT_FILES) |> !cxx |> {effect_objects}
+: {effect_objects} |> !ar |> libeffect.a
+
+MAIN_FILES = rainbow.cpp
+
+: foreach $(MAIN_FILES) |> !cxx |>
+: rainbow.o libeffect.a |> !ld |> rainbow
 
 .gitignore

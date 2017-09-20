@@ -5,11 +5,10 @@
 #include <cassert>
 #include <memory>
 
+#include "Effect.h"
 #include "MVar.h"
 
 namespace LED {
-    using Effect = ::Effect;
-
     template <typename Effect_t>
     class EffectRunner : private ::EffectRunner {
         using Super = ::EffectRunner;
