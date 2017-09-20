@@ -1,5 +1,3 @@
-#include <fadecandy/effect_runner.h>
-#include <fadecandy/effect.h>
 #include <fadecandy/color.h>
 
 #include <iostream>
@@ -10,6 +8,9 @@
 #include <numeric>
 #include <cmath>
 #include <algorithm>
+
+#include "MVar.h"
+#include "EffectRunner.h"
 
 namespace LED {
     class RainbowCylinder : public Effect {
@@ -57,9 +58,9 @@ void LED::RainbowCylinder::endFrame(const FrameInfo &frame) {
 }
 
 int main(int argc, char **argv) {
-    LED::RainbowCylinder rainbow;
-    EffectRunner runner;
-    runner.setEffect(&rainbow);
+    auto effect = LED::make_MVar<LED::RainbowCylinder>();
+    LED::EffectRunner<LED::RainbowCylinder> runner;
+    runner.setEffect(effect);
     runner.main(argc, argv);
 
     return 0;
