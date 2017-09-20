@@ -1,4 +1,4 @@
-CFLAGS = -g3 -Wall -Wextra -pedantic -O0 -isystem ./external-includes
+CFLAGS = -g3 -Wall -Wextra -pedantic -O0 -isystem $(TUP_CWD)/external-includes -I $(TUP_CWD)
 CCFLAGS = -std=c11
 CXXFLAGS = -std=c++14
 

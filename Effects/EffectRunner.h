@@ -8,7 +8,7 @@
 #include "Effect.h"
 #include "MVar.h"
 
-namespace LED {
+namespace LED { namespace Effects {
     template <typename Effect_t>
     class EffectRunner : private ::EffectRunner {
         using Super = ::EffectRunner;
@@ -98,4 +98,4 @@ namespace LED {
         using Super::parseArguments;
         using Super::main;
     };
-}
+}}

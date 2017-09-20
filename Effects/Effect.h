@@ -1,5 +1,5 @@
 #include <fadecandy/effect.h>
 
-namespace LED {
+namespace LED { namespace Effects {
     using Effect = ::Effect;
-}
+}}

@@ -8,12 +8,12 @@
 #include <algorithm>
 
 #include "MVar.h"
-#include "EffectRunner.h"
-#include "RainbowCylinder.h"
+#include "Effects/EffectRunner.h"
+#include "Effects/RainbowCylinder.h"
 
 int main(int argc, char **argv) {
-    auto effect = LED::make_MVar<LED::RainbowCylinder>();
-    LED::EffectRunner<LED::RainbowCylinder> runner;
+    auto effect = LED::make_MVar<LED::Effects::RainbowCylinder>();
+    LED::Effects::EffectRunner<LED::Effects::RainbowCylinder> runner;
     runner.setEffect(effect);
     runner.main(argc, argv);
 

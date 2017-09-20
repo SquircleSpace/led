@@ -1,6 +1,6 @@
-#include "Effect.h"
+#include "Effects/Effect.h"
 
-namespace LED {
+namespace LED { namespace Effects {
     class RainbowCylinder {
         float cycleTime_ = 5;
         float pixelGap_ = 1.0 / 15;
@@ -21,4 +21,4 @@ namespace LED {
         void endFrame(const FrameInfo &);
         void debug(const DebugInfo &);
     };
-}
+}}
