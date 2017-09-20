@@ -13,8 +13,7 @@
 #include "EffectRunner.h"
 
 namespace LED {
-    class RainbowCylinder : public Effect {
-        using Super = Effect;
+    class RainbowCylinder {
         float cycleTime_ = 5;
         float pixelGap_ = 1.0 / 15;
         float stripGap_ = 1.0 / 10;
@@ -24,10 +23,15 @@ namespace LED {
         float value_ = 0.75;
         float saturation_ = 1;
     public:
-        void shader(Vec3 &, const PixelInfo &) const override;
-        void postProcess(const Vec3 &, const PixelInfo &) override;
-        void beginFrame(const FrameInfo &) override;
-        void endFrame(const FrameInfo &) override;
+        using PixelInfo = Effect::PixelInfo;
+        using FrameInfo = Effect::FrameInfo;
+        using DebugInfo = Effect::DebugInfo;
+
+        void shader(Vec3 &, const PixelInfo &) const;
+        void postProcess(const Vec3 &, const PixelInfo &);
+        void beginFrame(const FrameInfo &);
+        void endFrame(const FrameInfo &);
+        void debug(const DebugInfo &);
     };
 }
 
@@ -41,20 +45,19 @@ void LED::RainbowCylinder::shader(Vec3 &rgb, const PixelInfo &pixel) const {
     hsv2rgb(rgb, cyclePortion, saturation_, value_);
 }
 
-void LED::RainbowCylinder::postProcess(const Vec3 &rgb, const PixelInfo &pixel) {
-    (void)pixel;
+void LED::RainbowCylinder::postProcess(const Vec3 &rgb, const PixelInfo &) {
     frameCost_ += rgb[0] + rgb[1] + rgb[2];
-    Super::postProcess(rgb, pixel);
 }
 
 void LED::RainbowCylinder::beginFrame(const FrameInfo &frame) {
     timeOffset_ = std::fmod(timeOffset_ + frame.timeDelta, cycleTime_);
     frameCost_ = 0;
-    Super::beginFrame(frame);
 }
 
-void LED::RainbowCylinder::endFrame(const FrameInfo &frame) {
-    Super::endFrame(frame);
+void LED::RainbowCylinder::endFrame(const FrameInfo &) {
+}
+
+void LED::RainbowCylinder::debug(const DebugInfo &) {
 }
 
 int main(int argc, char **argv) {
