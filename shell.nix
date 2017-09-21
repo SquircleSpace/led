@@ -4,5 +4,5 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   name = "led";
-  buildInputs = [pkgs.tup ghc];
+  buildInputs = [pkgs.tup ghc pkgs.ecl];
 }

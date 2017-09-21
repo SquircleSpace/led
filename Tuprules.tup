@@ -2,9 +2,16 @@ CFLAGS = -g3 -Wall -Wextra -pedantic -O0 -isystem $(TUP_CWD)/external-includes -
 CCFLAGS = -std=c11
 CXXFLAGS = -std=c++14
 
+ECL_LINK = $(TUP_CWD)/support/ecl-link.lisp
+
 !cxx = |> ^ CXX %f^ g++ $(CFLAGS) $(CXXFLAGS) -c %f -o %B.o |> %B.o
 !cc = |> ^ CC %f^ gcc $(CFLAGS) $(CCFLAGS) -c %f -o %B.o |> %B.o
 !ar = |> ^ AR %o^ ar rcs %o %f |>
 !ld = |> ^ LD %o^ g++ $(CFLAGS) $(CXXFLAGS) -o %o %f |>
 !ghc = |> ^ GHC %f^ ghc %f |> %B.hi %B.o
 !ghcld = |> ^ GHCLD %o^ ghc -o %o %f |>
+!ecl = |> ^ ECL %f^ ecl -s --compile %f |> %B.o
+!eclar = |> ecl --shell $(ECL_LINK) %o %f |>
+
+export NIX_CFLAGS_COMPILE
+export NIX_LDFLAGS
