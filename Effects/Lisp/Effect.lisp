@@ -1,16 +1,14 @@
 (defpackage :led/effect
   (:use :common-lisp)
-  (:export #:make-effect))
+  (:export #:make-effect #:begin-frame #:shader #:end-frame))
 (in-package :led/effect)
 
-(defstruct effect
-  )
+(defstruct effect)
 
-(defun begin-frame ()
-  (format t "lisp begin-frame~%"))
+(defun begin-frame ())
 
-(defun shader ()
-  (format t "lisp shader~%"))
+(defun shader (pixel)
+  (setf (aref pixel 0) 1.0)
+  pixel)
 
-(defun end-frame ()
-  (format t "lisp end-frame~%"))
+(defun end-frame ())

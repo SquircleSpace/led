@@ -1,5 +1,6 @@
 #include "Effects/Effect.h"
 #include "MVar.h"
+#include "LispConversion.h"
 
 #include <ecl/ecl.h>
 
@@ -17,8 +18,8 @@ namespace LED { namespace Effects {
         using FrameInfo = Effect::FrameInfo;
         using DebugInfo = Effect::DebugInfo;
 
-        void shader(Vec3 &, const PixelInfo &) const {
-            cl_funcall(1, shader_);
+        void shader(Vec3 &v, const PixelInfo &) const {
+            v = fromLisp<Vec3>(cl_funcall(2, shader_, toLisp(v)));
         }
 
         void postProcess(const Vec3 &, const PixelInfo &) {
