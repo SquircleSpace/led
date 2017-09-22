@@ -14,7 +14,7 @@ extern "C" {
 }
 
 LispEnvironment::LispEnvironment() {
-    ecl_set_option(ECL_OPT_TRAP_SIGINT, fix(0)); // ^c should quit
+    ecl_set_option(ECL_OPT_TRAP_SIGINT, 0); // ^c should quit
     char empty[] = {'\0'};
     char *argv[] = {empty};
     cl_boot(0, argv);
