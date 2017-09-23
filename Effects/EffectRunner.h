@@ -9,6 +9,25 @@
 #include "MVar.h"
 
 namespace LED { namespace Effects {
+    template <typename T>
+    class EffectRunner;
+
+    template <typename T>
+    void run(MVar<EffectRunner<T>> runner) {
+        while (true) {
+            runner.lock()->doFrame();
+        }
+    }
+
+    template <typename T>
+    int main(MVar<EffectRunner<T>> runner, int argc, char **argv) {
+        if (!runner.lock()->parseArguments(argc, argv)) {
+            return 1;
+        }
+        run<T>(runner);
+        return 0;
+    }
+
     template <typename Effect_t>
     class EffectRunner : private ::EffectRunner {
         using Super = ::EffectRunner;
@@ -73,8 +92,8 @@ namespace LED { namespace Effects {
 
         using Super::hasLayout;
         using Super::getLayout;
-        std::shared_ptr<Effect_t> getEffect() const {
-            return effect_;
+        MVar<Effect_t> getEffect() const {
+            return effect_.effect_;
         };
         using Super::isVerbose;
         using Super::getClient;

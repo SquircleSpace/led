@@ -13,9 +13,9 @@
 
 int main(int argc, char **argv) {
     auto effect = LED::make_MVar<LED::Effects::RainbowCylinder>();
-    LED::Effects::EffectRunner<LED::Effects::RainbowCylinder> runner;
-    runner.setEffect(effect);
-    runner.main(argc, argv);
+    auto runner = LED::make_MVar<LED::Effects::EffectRunner<LED::Effects::RainbowCylinder>>();
+    runner.lock()->setEffect(effect);
+    LED::Effects::main(runner, argc, argv);
 
     return 0;
 }
