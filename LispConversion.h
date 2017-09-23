@@ -1,3 +1,5 @@
+#pragma once
+
 #include <ecl/ecl.h>
 
 namespace LED {

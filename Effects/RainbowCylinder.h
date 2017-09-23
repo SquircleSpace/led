@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Effects/Effect.h"
 
 namespace LED { namespace Effects {

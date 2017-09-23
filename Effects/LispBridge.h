@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Effects/Effect.h"
 #include "MVar.h"
 #include "LispConversion.h"
