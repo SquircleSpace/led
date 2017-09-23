@@ -3,6 +3,7 @@
 #include "Effects/Effect.h"
 #include "MVar.h"
 #include "LispConversion.h"
+#include "LispEnvironment.h"
 
 #include <ecl/ecl.h>
 

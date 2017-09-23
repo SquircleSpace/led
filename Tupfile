@@ -1,10 +1,10 @@
 include_rules
 
-MAIN_FILES = rainbow.cpp lisp.cpp
+MAIN_FILES = rainbow.cpp lisp-test.cpp
 
 : foreach $(MAIN_FILES) |> !cxx |>
 : rainbow.o Effects/libeffects.a |> !ld |> rainbow
 
-: lisp.o Effects/LispBridge.o Effects/Lisp/liblispLogic.a |> !ld -lecl |> lisp
+: lisp-test.o lisp/liblispSupport.a lisp/Lisp/liblispLogic.a |> !ld -lecl |> lisp-test
 
 .gitignore

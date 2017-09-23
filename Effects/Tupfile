@@ -5,6 +5,4 @@ CXX_EFFECT_FILES = RainbowCylinder.cpp
 : foreach $(CXX_EFFECT_FILES) |> !cxx |> {effect_objects}
 : {effect_objects} |> !ar |> libeffects.a
 
-: LispBridge.cpp |> !cxx |>
-
 .gitignore

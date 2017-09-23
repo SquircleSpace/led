@@ -1,6 +1,6 @@
 #include "MVar.h"
 #include "Effects/EffectRunner.h"
-#include "Effects/LispBridge.h"
+#include "lisp/LispBridge.h"
 
 int main(int argc, char **argv) {
     auto effect = LED::make_MVar<LED::Effects::LispBridge>();

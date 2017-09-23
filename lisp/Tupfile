@@ -1,0 +1,8 @@
+include_rules
+
+: LispBridge.cpp |> !cxx |> {liblispSupport}
+: LispEnvironment.cpp |> !cxx |> {liblispSupport}
+
+: {liblispSupport} |> !ar |> liblispSupport.a
+
+.gitignore
