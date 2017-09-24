@@ -3,7 +3,7 @@ include_rules
 MAIN_FILES = rainbow.cpp lisp-test.cpp
 
 : foreach $(MAIN_FILES) |> !cxx |>
-: rainbow.o Effects/libeffects.a |> !ld |> rainbow
+: rainbow.o lisp/liblispSupport.a lisp/Lisp/liblispLogic.a Effects/libeffects.a |> !ld -lpthread -lecl |> rainbow
 
 : lisp-test.o lisp/liblispSupport.a lisp/Lisp/liblispLogic.a |> !ld -lecl |> lisp-test
 
