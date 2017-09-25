@@ -4,15 +4,33 @@
 
 namespace LED { namespace Effects {
     class RainbowCylinder : public Effect {
-        float cycleTime_ = 5;
-        float pixelGap_ = 1.0 / 15;
-        float stripGap_ = 1.0 / 10;
-        float timeOffset_ = 0;
-        float frameCost_ = 0;
-        float value_ = 0.75;
-        float saturation_ = 1;
-        bool alternateDirections_ = true;
     public:
+        struct State {
+            float cycleTime = 5;
+            float pixelGap = 1.0 / 15;
+            float stripGap = 1.0 / 10;
+            float timeOffset = 0;
+            float value = 0.75;
+            float saturation = 1;
+            bool alternateDirections = true;
+        };
+    private:
+        float frameCost_ = 0;
+        State state_;
+
+    public:
+        State &getState() {
+            return state_;
+        }
+
+        const State &getState() const {
+            return state_;
+        }
+
+        void setState(const State &s) {
+            state_ = s;
+        }
+
         using PixelInfo = Effect::PixelInfo;
         using FrameInfo = Effect::FrameInfo;
         using DebugInfo = Effect::DebugInfo;
