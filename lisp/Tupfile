@@ -5,4 +5,7 @@ include_rules
 
 : {liblispSupport} |> !ar |> liblispSupport.a
 
+: foreach *.lisp |> !ecl |> {liblispLogic}
+: {liblispLogic} |> !eclar |> liblispLogic.a
+
 .gitignore

@@ -22,7 +22,7 @@ static void lisp_repl(LED::MVar<LED::Effects::EffectRunner<LED::Effects::Effect>
     auto output = cl_core.standard_output;
     ECL_CATCH_ALL_BEGIN(env) {
         auto package_sym = ecl_make_symbol("*PACKAGE*", "COMMON-LISP");
-        ecl_bds_bind(env, package_sym, ecl_find_package("LED"));
+        ecl_bds_bind(env, package_sym, ecl_find_package("LED/MAIN"));
         writestr_stream("Let's get lisp'n\n", output);
 
         auto die = ecl_make_symbol("DIE", "LED");

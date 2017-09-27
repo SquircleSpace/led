@@ -1,5 +1,5 @@
-(defpackage :led
+(defpackage :led/main
   (:use :common-lisp))
-(in-package :led)
+(in-package :led/main)
 
 ;; That's all for now
