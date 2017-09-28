@@ -15,3 +15,5 @@ ECL_LINK = $(TUP_CWD)/support/ecl-link.lisp
 
 export NIX_CFLAGS_COMPILE
 export NIX_LDFLAGS
+export NIX_CC
+export NIX_CC_WRAPPER_x86_64_unknown_linux_gnu_TARGET_HOST
