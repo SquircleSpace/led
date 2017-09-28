@@ -1,24 +1,18 @@
 #pragma once
 
 #include "Effects/Effect.h"
+#include "RainbowCylinderState.pb.h"
 
 namespace LED { namespace Effects {
     class RainbowCylinder : public Effect {
-    public:
-        struct State {
-            float cycleTime = 5;
-            float pixelGap = 1.0 / 15;
-            float stripGap = 1.0 / 10;
-            float timeOffset = 0;
-            float value = 0.75;
-            float saturation = 1;
-            bool alternateDirections = true;
-        };
-    private:
         float frameCost_ = 0;
-        State state_;
+        float timeOffset_ = 0;
+        RainbowCylinderState state_ = defaultState();
+        static RainbowCylinderState defaultState();
 
     public:
+        using State = RainbowCylinderState;
+
         State &getState() {
             return state_;
         }

@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package LED.Effects;
+
+message RainbowCylinderState {
+    optional float cycle_time = 1;
+    optional float pixel_gap = 2;
+    optional float strip_gap = 3;
+    optional float value = 4;
+    optional float saturation = 5;
+    optional bool alternate_directions = 6;
+};
