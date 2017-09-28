@@ -2,6 +2,7 @@ include_rules
 
 : LispBridge.cpp |> !cxx |> {liblispSupport}
 : LispEnvironment.cpp |> !cxx |> {liblispSupport}
+: Binding.cpp |> !cxx |> {liblispSupport}
 
 : {liblispSupport} |> !ar |> liblispSupport.a
 
