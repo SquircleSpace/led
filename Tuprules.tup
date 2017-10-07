@@ -11,10 +11,11 @@ ECL_LINK = $(TUP_CWD)/support/ecl-link.lisp
 !ghc = |> ^ GHC %f^ ghc %f |> %B.hi %B.o
 !ghcld = |> ^ GHCLD %o^ ghc -o %o %f |>
 !ecl = |> ^ ECL %f^ ecl -s --compile %f |> %B.o
-!eclar = |> ecl --shell $(ECL_LINK) %o %f |>
-!proto_cxx = |> protoc --cpp_out=. %f |> %B.pb.h %B.pb.cc
+!eclar = |> ^ ECLAR %o^ ecl --shell $(ECL_LINK) %o %f |>
+!proto_cxx = |> ^ PROTOC-CPP %f^ protoc --cpp_out=. %f |> %B.pb.h %B.pb.cc
 
 export NIX_CFLAGS_COMPILE
 export NIX_LDFLAGS
 export NIX_CC
 export NIX_CC_WRAPPER_x86_64_unknown_linux_gnu_TARGET_HOST
+export CL_SOURCE_REGISTRY

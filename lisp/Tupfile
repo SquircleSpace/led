@@ -1,13 +1,11 @@
 include_rules
 
-export CL_SOURCE_REGISTRY
-
 : LispBridge.cpp |> !cxx |> {liblispSupport}
 : LispEnvironment.cpp |> !cxx |> {liblispSupport}
 : Binding.cpp |> !cxx |> {liblispSupport}
 
 : {liblispSupport} |> !ar |> liblispSupport.a
 
-: |> ecl --load build.lisp |> liblispLogic.a
+: | <protofiles> |> ^ ASDF %o^ sbcl --load build-program.lisp |> control
 
 .gitignore

@@ -4,5 +4,5 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   name = "led";
-  buildInputs = [pkgs.tup ghc pkgs.ecl pkgs.protobuf];
+  buildInputs = [pkgs.tup ghc pkgs.sbcl pkgs.ecl pkgs.protobuf pkgs.lispPackages.cl-protobufs pkgs.lispPackages.swank pkgs.lispPackages.cl-cli];
 }

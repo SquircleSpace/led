@@ -7,22 +7,18 @@ namespace LED { namespace Effects {
     class RainbowCylinder : public Effect {
         float frameCost_ = 0;
         float timeOffset_ = 0;
-        RainbowCylinderState state_ = defaultState();
-        static RainbowCylinderState defaultState();
+        Proto::RainbowCylinder state_ = defaultState();
+        static Proto::RainbowCylinder defaultState();
 
     public:
-        using State = RainbowCylinderState;
+        using State = Proto::RainbowCylinder;
 
-        State &getState() {
+        State &state() {
             return state_;
         }
 
-        const State &getState() const {
+        const State &state() const {
             return state_;
-        }
-
-        void setState(const State &s) {
-            state_ = s;
         }
 
         using PixelInfo = Effect::PixelInfo;

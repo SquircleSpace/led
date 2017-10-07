@@ -1,12 +1,31 @@
 syntax = "proto2";
 
-package LED.Effects;
+package LED.Effects.Proto;
 
-message RainbowCylinderState {
+message RainbowCylinder {
     optional float cycle_time = 1;
     optional float pixel_gap = 2;
     optional float strip_gap = 3;
     optional float value = 4;
     optional float saturation = 5;
     optional bool alternate_directions = 6;
+};
+
+message CompoundEffect {
+    optional BasicEffect basic = 1;
+    optional Pipeline pipeline = 2;
+    optional Sum sum = 3;
+};
+
+message BasicEffect {
+    optional RainbowCylinder rainbow = 1;
+};
+
+message Sum {
+    repeated CompoundEffect effects = 1;
+    repeated float weights = 2;
+};
+
+message Pipeline {
+    repeated CompoundEffect effects = 1;
 };
